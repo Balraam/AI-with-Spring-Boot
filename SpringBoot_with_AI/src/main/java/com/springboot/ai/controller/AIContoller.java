@@ -16,12 +16,7 @@ public class AIContoller {
 	@Autowired
 	private AIService service;
 	
-//	@PostMapping("/api/v1/generate")
-//	public String generage(@RequestBody String promptMessage) {
-//		return service.generatePrompt(promptMessage);
-//	}
-
-	@PostMapping("/api/v1/generate")
+	@PostMapping("/api/chat")
     public ResponseEntity<String> generate(@RequestBody GenerateRequest request) {
         String promptMessage = request.getPromptMessage();
 

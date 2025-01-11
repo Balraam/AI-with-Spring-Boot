@@ -14,22 +14,13 @@ public class AIService {
 	@Autowired
 	private OllamaChatModel chatModel;
 	
-//	public String generatePrompt(String prompt) {
-//		ChatResponse response = chatModel.call(
-//			    new Prompt(
-//                     "Generate the names of 5 famous pirates.",
-//                      OllamaOptions.create()
-//                      .withModel(OllamaModel.LLAMA2)
-//			    ));
-//		return response.getResult().getOutput().getContent();
-//	}
 	
 	public String generatePrompt(String prompt) {
 	    try {
 	        // Create a new Prompt object with the provided prompt
 	        Prompt generatedPrompt = new Prompt(
 	            prompt, 
-	            OllamaOptions.create().withModel(OllamaModel.LLAMA3_2)
+	            OllamaOptions.create().withModel(OllamaModel.LLAMA3_2_1B)
 	        );
 	        
 	        // Call the chat model
