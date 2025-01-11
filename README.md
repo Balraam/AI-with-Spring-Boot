@@ -88,22 +88,6 @@ src/
 1. **Download Ollama**
    - Visit the [Ollama Downloads Page](https://ollama.ai/downloads) and download the appropriate version for your operating system (Windows, macOS, or Linux).
 
-2. **Install Ollama**
-   - Follow the installation instructions specific to your OS.
-
-3. **Run Ollama**
-   - Open a terminal and start the Ollama service:
-     ```bash
-     ollama start
-     ```
-
-4. **Verify Ollama Service**
-   - Use the following command to check if Ollama is running:
-     ```bash
-     ollama status
-     ```
-   - It should display a message confirming that the service is active.
-
 5. **Test Ollama API Locally**
    - Use a test prompt to ensure Ollama API is responding:
      ```bash
