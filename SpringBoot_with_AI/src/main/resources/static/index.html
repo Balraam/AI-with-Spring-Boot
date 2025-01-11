@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt Generator</title>
+    <script>
+        async function generatePrompt(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            const promptMessage = document.getElementById("promptMessage").value;
+
+            if (!promptMessage.trim()) {
+                alert("Prompt message cannot be empty!");
+                return;
+            }
+
+            try {
+                const response = await fetch("http://localhost:8080/api/v1/generate", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ promptMessage })
+                });
+
+                if (!response.ok) {
+                    throw new Error("API call failed with status " + response.status);
+                }
+
+                const result = await response.text();
+                document.getElementById("result").innerText = "Generated Response: " + result;
+            } catch (error) {
+                console.error(error);
+                document.getElementById("result").innerText = "Error: " + error.message;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Prompt Generator</h1>
+    <form onsubmit="generatePrompt(event)">
+        <label for="promptMessage">Enter Prompt Message:</label>
+        <input type="text" id="promptMessage" name="promptMessage" required>
+        <button type="submit">Generate</button>
+    </form>
+    <p id="result" style="margin-top: 20px; font-weight: bold;"></p>
+</body>
+</html>
